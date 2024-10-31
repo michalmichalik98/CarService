@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Vehicle Service</title>
+</head>
+<body>
+<h1>Lista pojazdów</h1>
+
+<ul>
+    <li th:each="vehicle : ${vehicles}">
+        [[${vehicle.registrationNumber}]] - [[${vehicle.name}]] - [[${vehicle.color}]] - [[${vehicle.year}]]
+    </li>
+</ul>
+
+<h2>Dodaj nowy pojazd</h2>
+<form th:action="@{/addVehicle}" method="post">
+    <input type="text" name="registrationNumber" placeholder="Numer rejestracyjny" required>
+    <input type="text" name="name" placeholder="Nazwa" required>
+    <input type="text" name="color" placeholder="Kolor">
+    <input type="number" name="year" placeholder="Rocznik">
+    <button type="submit">Dodaj</button>
+</form>
+
+<h2>Napraw pojazd</h2>
+<form th:action="@{/repairVehicle}" method="post">
+    <input type="text" name="registrationNumber" placeholder="Numer rejestracyjny" required>
+    <button type="submit">Napraw</button>
+</form>
+
+</body>
+</html>
